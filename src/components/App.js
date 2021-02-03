@@ -4,15 +4,20 @@ import itemData from "../data/items";
 
 function App() {
   const [items, setItems] = useState(itemData);
+  const [darkOrLightMode, setDarkOrLightMode] = useState(false)
 
   // this data will be passed down to the ShoppingList as a prop
   console.log(items);
 
+  function handleClick(){
+    setDarkOrLightMode(!darkOrLightMode)
+  }
+
   return (
-    <div className={"App " + (false ? "dark" : "light")}>
+    <div className={"App " + (darkOrLightMode ? "dark" : "light")}>
       <header>
         <h2>Shopster</h2>
-        <button>Dark Mode</button>
+        <button onClick={handleClick}>{darkOrLightMode ? "Dark" : "Light"} Mode</button>
       </header>
       <ShoppingList items={items} />
     </div>
